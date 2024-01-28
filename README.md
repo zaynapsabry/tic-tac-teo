@@ -11,7 +11,7 @@ Tic Tac Toe is a classic game where two players take turns putting "X" or "O" on
 * Restart Option: Start a new game at any time.
 
 ## Installation
-* Clone the repository:git clone https://github.com/your-username/tic-tac-toe.git
+* Clone the repository:git clone https://github.com/zaynapsabry/tic-tac-toe.git
 * Open the index.html file in your browser.
 
 ## Usage
