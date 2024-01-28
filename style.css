@@ -62,3 +62,25 @@ body {
   font-size: 2.3rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.box:hover {
+  background-color: #d6d6d6;
+}
+
+#restartBtn {
+  font-family: "Finger Paint", cursive;
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  background-color: #ff7eb9;
+  color: #fff;
+  border: #ff7eb9;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: 200ms transform;
+}
+
+#restartBtn:hover {
+  background-color: #ff5e99;
+  transform: translateY(-2px);
+}
