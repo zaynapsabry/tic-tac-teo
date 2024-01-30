@@ -5,7 +5,6 @@ It's a classic XO game
 Tic Tac Toe is a classic game where two players take turns putting "X" or "O" on a 3x3 grid starting with X. The goal is to be the first to make a row, column, or diagonal with their symbol. It's a simple game, but you have to be smart about where you put your "X" or "O" to win. The game stops when someone wins or the whole grid is filled, and it's a tie. Tic Tac Toe is easy to play but still needs some thinking to win!
 
 ## Features
-* Responsive Design: Playable on various devices, including desktops, tablets, and smartphones.
 * Two-Player Mode: Play against a friend locally.
 * Winning Logic: The game recognizes when a player has won or when it's a draw.
 * Restart Option: Start a new game at any time.
