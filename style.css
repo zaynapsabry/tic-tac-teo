@@ -84,3 +84,41 @@ body {
   background-color: #ff5e99;
   transform: translateY(-2px);
 }
+
+#message {
+  color: rgb(250, 11, 11);
+}
+
+.errorMessage {
+  color: rgb(250, 11, 11);
+  text-align: left;
+  font-size: 0.9rem;
+  margin: 8px 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+form div {
+  margin-bottom: 35px;
+}
+
+input {
+  border: none;
+  background-color: #f2efef;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-family: "Finger Paint", cursive;
+  font-size: inherit;
+}
+
+input:focus {
+  outline-color: #ff7eb9;
+}
