@@ -47,17 +47,21 @@ const startGame = () => {
   boxes.forEach((box) => box.addEventListener("click", boxClicked));
 };
 
-restartBtn.addEventListener("click", restart);
-
 exitBtn.addEventListener("click", () => {
-  localStorage.clear();
-  window.location.href = "index.html";
+  window.removeEventListener("beforeunload", beforeUnloadHandler);
+  restart("Are you sure you want to exit the game?");
+  modalRef.addEventListener("click", (e) => {
+    if (e.target.id === "confirmRestart") {
+      localStorage.clear();
+      window.location.href = "index.html";
+    } else if (e.target.id === "cancelRestart") {
+      document.getElementById("overlay").style.display = "none";
+    }
+  });
 });
 
-window.addEventListener("beforeunload", function (event) {
-  var message = "Are you sure? your data will be deleted";
-  event.returnValue = message;
-  return message;
+restartBtn.addEventListener("click", () => {
+  restart("Are you sure you want to start a new game?");
 });
 
 function boxClicked(e) {
@@ -149,7 +153,7 @@ function restart(message) {
 
   modalRef.addEventListener("click", (e) => {
     if (e.target.id === "confirmRestart") {
-      
+
       document.getElementById("overlay").style.display = "none";
 
       spaces.fill(null);
