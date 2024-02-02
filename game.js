@@ -5,6 +5,11 @@ let boxes = Array.from(document.getElementsByClassName("box"));
 let playersNames = JSON.parse(localStorage.getItem("players"));
 console.log(playersNames);
 
+let highScoreX = localStorage.getItem(`${playersNames?.player1}_highScore`) || 0;
+let highScoreO = localStorage.getItem(`${playersNames?.player2}_highScore`) || 0;
+const highScoreXElement = document.getElementById("highScoreX");
+const highScoreOElement = document.getElementById("highScoreO");
+
 const O_TEXT = "O";
 const X_TEXT = "X";
 let currentPlayer = X_TEXT;
@@ -38,6 +43,7 @@ const winningCombos = [
 const startGame = () => {
   player1Name.innerHTML = `${playersNames?.player1}: `;
   player2Name.innerHTML = `${playersNames?.player2}: `;
+  updateHighScores(); 
   boxes.forEach((box) => box.addEventListener("click", boxClicked));
 };
 
@@ -82,12 +88,20 @@ function handleWin() {
     game_name.innerHTML = `${playersNames?.player1} has won!`;
     if (scoreX) {
       X_score++;
+      if (X_score > highScoreX) {
+        highScoreX = X_score;
+        localStorage.setItem(`${playersNames?.player1}_highScore`, highScoreX);
+      }
       scoreX.innerText = `${X_score}`;
     }
   } else {
     game_name.innerHTML = `${playersNames?.player2} has won!`;
     if (scoreO) {
       O_score++;
+      if (O_score > highScoreO) {
+        highScoreO = O_score;
+        localStorage.setItem(`${playersNames?.player2}_highScore`, highScoreO);
+      }
       scoreO.innerText = `${O_score}`;
     }
   }
@@ -100,6 +114,7 @@ function handleWin() {
       (boxes[box].style.color = "#ff7eb9")
     )
   );
+  updateHighScores();
 }
 
 function switchPlayer() {
@@ -123,6 +138,11 @@ function playerHasWon() {
   return false;
 }
 
+function updateHighScores() {
+  highScoreXElement.innerText = highScoreX;
+  highScoreOElement.innerText = highScoreO;
+}
+
 function restart() {
   document.getElementById("overlay").style.display = "block";
 
@@ -141,10 +161,11 @@ function restart() {
       game_name.innerHTML = "Tic Tac Toe";
       currentPlayer = X_TEXT;
       count_plays = 0;
+      updateHighScores();
     } else if (e.target.id === "cancelRestart") {
       document.getElementById("overlay").style.display = "none";
     }
   });
 }
-
+updateHighScores();
 startGame();
