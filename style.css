@@ -67,7 +67,9 @@ body {
   background-color: #d6d6d6;
 }
 
-#restartBtn {
+#restartBtn,
+#startBtn,
+#exitBtn {
   font-family: "Finger Paint", cursive;
   margin-bottom: 25px;
   padding: 10px 20px;
@@ -78,6 +80,17 @@ body {
   cursor: pointer;
   font-size: 1.4rem;
   transition: 200ms transform;
+}
+
+#restartBtn {
+  margin-bottom: 20px;
+}
+
+#restartBtn:hover,
+#startBtn:hover,
+#exitBtn:hover {
+  background-color: #ff5e99;
+  transform: translateY(-2px);
 }
 
 .overlay {
@@ -103,11 +116,6 @@ body {
   margin-top: 10px;
   padding: 5px 10px;
   cursor: pointer;
-}
-
-#restartBtn:hover {
-  background-color: #ff5e99;
-  transform: translateY(-2px);
 }
 
 #message {

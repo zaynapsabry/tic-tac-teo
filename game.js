@@ -3,6 +3,7 @@ const player2Name = document.getElementById("player2Name");
 
 let boxes = Array.from(document.getElementsByClassName("box"));
 let playersNames = JSON.parse(localStorage.getItem("players"));
+console.log(playersNames);
 
 const O_TEXT = "O";
 const X_TEXT = "X";
@@ -52,7 +53,6 @@ window.addEventListener("beforeunload", function (event) {
   event.returnValue = message;
   return message;
 });
-
 
 function boxClicked(e) {
   const id = e.target.id;
