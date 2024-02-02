@@ -5,8 +5,11 @@ let boxes = Array.from(document.getElementsByClassName("box"));
 let playersNames = JSON.parse(localStorage.getItem("players"));
 console.log(playersNames);
 
-let highScoreX = localStorage.getItem(`${playersNames?.player1}_highScore`) || 0;
-let highScoreO = localStorage.getItem(`${playersNames?.player2}_highScore`) || 0;
+let highScoreX =
+  localStorage.getItem(`${playersNames?.player1}_highScore`) || 0;
+let highScoreO =
+  localStorage.getItem(`${playersNames?.player2}_highScore`) || 0;
+
 const highScoreXElement = document.getElementById("highScoreX");
 const highScoreOElement = document.getElementById("highScoreO");
 
@@ -43,16 +46,23 @@ const winningCombos = [
 const startGame = () => {
   player1Name.innerHTML = `${playersNames?.player1}: `;
   player2Name.innerHTML = `${playersNames?.player2}: `;
-  updateHighScores(); 
+  updateHighScores();
   boxes.forEach((box) => box.addEventListener("click", boxClicked));
 };
 
+function beforeUnloadHandler(event) {
+  var message = "Are you sure? Your data may be lost.";
+  event.returnValue = message;
+  return message;
+}
+
+window.addEventListener("beforeunload", beforeUnloadHandler);
 exitBtn.addEventListener("click", () => {
   window.removeEventListener("beforeunload", beforeUnloadHandler);
   restart("Are you sure you want to exit the game?");
   modalRef.addEventListener("click", (e) => {
     if (e.target.id === "confirmRestart") {
-      localStorage.clear();
+      localStorage.removeItem(players);
       window.location.href = "index.html";
     } else if (e.target.id === "cancelRestart") {
       document.getElementById("overlay").style.display = "none";
@@ -153,7 +163,6 @@ function restart(message) {
 
   modalRef.addEventListener("click", (e) => {
     if (e.target.id === "confirmRestart") {
-
       document.getElementById("overlay").style.display = "none";
 
       spaces.fill(null);

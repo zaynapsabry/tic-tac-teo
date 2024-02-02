@@ -30,25 +30,25 @@ body {
   text-transform: uppercase;
 }
 
-.score , .high-score {
+.score {
   display: grid;
   grid-template-columns: repeat(2, 100px);
-  grid-gap: 10px;
+  grid-gap: 20px;
   justify-content: center;
   font-size: 1.1rem;
-}
-
-.high-score{
-  font-size: 0.9rem;
-  grid-gap: 60px;
-
+  color: #444242;
 }
 
 .score #scoreX,
-.score #scoreY,
-.high-score #highScoreX,
-.high-score #highScoreO {
+.score #scoreO,
+.score #highScoreX,
+.score #highScoreO {
   color: #ff7eb9;
+}
+
+.score .small {
+  margin-top: -13px;
+  font-size: 0.8rem;
 }
 
 #gameboard {
@@ -75,11 +75,11 @@ body {
   background-color: #d6d6d6;
 }
 
+#game_name,
 #restartBtn,
 #startBtn,
 #exitBtn {
   font-family: "Finger Paint", cursive;
-  margin-bottom: 25px;
   padding: 10px 20px;
   background-color: #ff7eb9;
   color: #fff;
@@ -88,6 +88,10 @@ body {
   cursor: pointer;
   font-size: 1.4rem;
   transition: 200ms transform;
+}
+
+#game_name {
+  font-size: 35px;
 }
 
 #restartBtn {
@@ -130,7 +134,9 @@ body {
   color: rgb(250, 11, 11);
 }
 
-.errorMessage {
+.errorMessage1,
+.errorMessage2,
+.error {
   color: rgb(250, 11, 11);
   text-align: left;
   font-size: 0.9rem;
@@ -144,7 +150,7 @@ body {
 
 form {
   font-size: 1.2rem;
-  margin: 20px 0;
+  margin: 35px 0 20px 0;
 }
 
 form div {
