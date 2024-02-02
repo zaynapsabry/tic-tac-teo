@@ -4,19 +4,12 @@ const player2Name = document.getElementById("player2Name");
 let boxes = Array.from(document.getElementsByClassName("box"));
 let playersNames = JSON.parse(localStorage.getItem("players"));
 
-let game_name = document.getElementById("game_name");
-let scoreX = document.getElementById("scoreX");
-let scoreO = document.getElementById("scoreO");
-
 const O_TEXT = "O";
 const X_TEXT = "X";
 let currentPlayer = X_TEXT;
 
 let spaces = Array(9).fill(null);
 let count_plays = 0;
-
-let X_score = 0;
-let O_score = 0;
 
 const winningCombos = [
   [0, 1, 2],
@@ -56,31 +49,6 @@ function handleMove(id, e) {
   } else {
     switchPlayer();
   }
-}
-
-function handleWin() {
-  if (currentPlayer === X_TEXT) {
-    game_name.innerHTML = `${playersNames?.player1} has won!`;
-    if (scoreX) {
-      X_score++;
-      scoreX.innerText = `${X_score}`;
-    }
-  } else {
-    game_name.innerHTML = `${playersNames?.player2} has won!`;
-    if (scoreO) {
-      O_score++;
-      scoreO.innerText = `${O_score}`;
-    }
-  }
-
-  let winning_blocks = playerHasWon();
-  count_plays = 10;
-  winning_blocks.forEach(
-    (box) => (
-      (boxes[box].style.backgroundColor = "#c9c7c7"),
-      (boxes[box].style.color = "#ff7eb9")
-    )
-  );
 }
 
 function switchPlayer() {
