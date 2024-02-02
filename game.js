@@ -21,6 +21,8 @@ let O_score = 0;
 let restartBtn = document.getElementById("restartBtn");
 const modalRef = document.getElementById("modal");
 
+let exitBtn = document.getElementById("exitBtn");
+
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -39,6 +41,18 @@ const startGame = () => {
 };
 
 restartBtn.addEventListener("click", restart);
+
+exitBtn.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.href = "index.html";
+});
+
+window.addEventListener("beforeunload", function (event) {
+  var message = "Are you sure? your data will be deleted";
+  event.returnValue = message;
+  return message;
+});
+
 
 function boxClicked(e) {
   const id = e.target.id;
