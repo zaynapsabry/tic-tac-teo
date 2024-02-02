@@ -3,7 +3,7 @@ const player2Name = document.getElementById("player2Name");
 
 let boxes = Array.from(document.getElementsByClassName("box"));
 let playersNames = JSON.parse(localStorage.getItem("players"));
-console.log(playersNames);
+// console.log(playersNames);
 
 let highScoreX =
   localStorage.getItem(`${playersNames?.player1}_highScore`) || 0;
@@ -62,7 +62,7 @@ exitBtn.addEventListener("click", () => {
   restart("Are you sure you want to exit the game?");
   modalRef.addEventListener("click", (e) => {
     if (e.target.id === "confirmRestart") {
-      localStorage.removeItem(players);
+      localStorage.removeItem("players");
       window.location.href = "index.html";
     } else if (e.target.id === "cancelRestart") {
       document.getElementById("overlay").style.display = "none";
