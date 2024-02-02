@@ -183,6 +183,14 @@ function dropBalloons() {
   }
 }
 
+// Function to remove balloons from the gameboard
+function removeBalloons() {
+  const balloons = document.querySelectorAll(".balloon");
+  balloons.forEach((balloon) => {
+    balloon.remove();
+  });
+}
+
 
 function switchPlayer() {
   count_plays++;
