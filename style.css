@@ -169,3 +169,28 @@ input {
 input:focus {
   outline-color: #ff7eb9;
 }
+
+.balloon {
+  position: absolute;
+  width: 200; 
+  height: 500; 
+  border-radius: 0; 
+  animation-name: balloon-animation;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  transform-origin: center bottom;
+  z-index: 1;
+}
+
+@keyframes balloon-animation {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-200px) rotate(-10deg) scale(1.2); /* Add rotation for a floating effect */
+  }
+  100% {
+    transform: translateY(-500px) rotate(-20deg) scale(0.8); /* Adjust rotation and scale for deflation */
+    opacity: 0;
+  }
+}
