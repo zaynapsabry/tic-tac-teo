@@ -131,6 +131,12 @@ function handleWin() {
   updateHighScores();
 }
 
+function playBalloonPopSound() {
+  const audio = new Audio("assets/firework.mp3"); // balloon pop sound file
+  audio.play();
+
+}
+
 function switchPlayer() {
   count_plays++;
   currentPlayer = currentPlayer === X_TEXT ? O_TEXT : X_TEXT;
@@ -139,6 +145,8 @@ function switchPlayer() {
 function handleDraw() {
   game_name.innerHTML = `Draw Game!`;
   boxes.forEach((box) => (box.style.backgroundColor = "#ff7eb9"));
+  const audio = new Audio("assets/Directed by Robert.mp3");
+  audio.play();
 }
 
 function playerHasWon() {
