@@ -93,6 +93,11 @@ function switchPlayer() {
   currentPlayer = currentPlayer === X_TEXT ? O_TEXT : X_TEXT;
 }
 
+function handleDraw() {
+  game_name.innerHTML = `Draw Game!`;
+  boxes.forEach((box) => (box.style.backgroundColor = "#ff7eb9"));
+}
+
 function playerHasWon() {
   for (const condition of winningCombos) {
     let [a, b, c] = condition;
