@@ -30,7 +30,7 @@ body {
   text-transform: uppercase;
 }
 
-.score {
+.score , .high-score {
   display: grid;
   grid-template-columns: repeat(2, 100px);
   grid-gap: 10px;
@@ -38,8 +38,16 @@ body {
   font-size: 1.1rem;
 }
 
+.high-score{
+  font-size: 0.9rem;
+  grid-gap: 60px;
+
+}
+
 .score #scoreX,
-.score #scoreY {
+.score #scoreY,
+.high-score #highScoreX,
+.high-score #highScoreO {
   color: #ff7eb9;
 }
 
