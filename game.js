@@ -129,6 +129,8 @@ function handleWin() {
     )
   );
   updateHighScores();
+  dropBalloons(boxes[winning_blocks[0]]); //drop balloons call
+
 }
 
 function playBalloonPopSound() {
@@ -136,6 +138,51 @@ function playBalloonPopSound() {
   audio.play();
 
 }
+
+
+
+//drop random balloons
+
+function dropBalloons() {
+  playBalloonPopSound();
+
+  const balloonUrls = [
+
+"https://www.iconpacks.net/icons/1/free-icon-balloon-370.png",
+"https://www.iconpacks.net/icons/1/free-icon-balloon-438.png",
+"https://www.iconpacks.net/icons/1/free-icon-balloon-369.png",
+// ... add more balloon URLs here
+  ];
+
+  const balloonCount = 20;
+  const pageWidth = window.innerWidth;
+  const pageHeight = window.innerHeight;
+
+  for (let i = 0; i < balloonCount; i++) {
+    const randomIndex = Math.floor(Math.random() * balloonUrls.length);
+    const balloonUrl = balloonUrls[randomIndex];
+
+    const balloon = document.createElement("img");
+    balloon.src = balloonUrl;
+    balloon.classList.add("balloon");
+    document.body.appendChild(balloon);
+
+    const balloonRect = balloon.getBoundingClientRect();
+
+    const offsetX = Math.random() * (pageWidth - balloonRect.width);
+    const offsetY = Math.random() * (pageHeight - balloonRect.height);
+
+    balloon.style.left = `${offsetX}px`;
+    balloon.style.top = `${offsetY}px`;
+
+    balloon.style.animationDelay = `${Math.random() * 2}s`;
+
+    balloon.addEventListener("animationend", function () {
+      document.body.removeChild(balloon);
+    });
+  }
+}
+
 
 function switchPlayer() {
   count_plays++;
