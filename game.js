@@ -143,11 +143,13 @@ function updateHighScores() {
   highScoreOElement.innerText = highScoreO;
 }
 
-function restart() {
+function restart(message) {
   document.getElementById("overlay").style.display = "block";
+  document.getElementById("modalMessage").innerText = message;
 
   modalRef.addEventListener("click", (e) => {
     if (e.target.id === "confirmRestart") {
+      
       document.getElementById("overlay").style.display = "none";
 
       spaces.fill(null);
