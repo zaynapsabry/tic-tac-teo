@@ -18,6 +18,9 @@ let scoreO = document.getElementById("scoreO");
 let X_score = 0;
 let O_score = 0;
 
+let restartBtn = document.getElementById("restartBtn");
+const modalRef = document.getElementById("modal");
+
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -34,6 +37,8 @@ const startGame = () => {
   player2Name.innerHTML = `${playersNames?.player2}: `;
   boxes.forEach((box) => box.addEventListener("click", boxClicked));
 };
+
+restartBtn.addEventListener("click", restart);
 
 function boxClicked(e) {
   const id = e.target.id;
@@ -98,3 +103,29 @@ function playerHasWon() {
   }
   return false;
 }
+
+function restart() {
+  document.getElementById("overlay").style.display = "block";
+
+  modalRef.addEventListener("click", (e) => {
+    if (e.target.id === "confirmRestart") {
+      document.getElementById("overlay").style.display = "none";
+
+      spaces.fill(null);
+
+      boxes.forEach((box) => {
+        box.innerText = "";
+        box.style.color = "";
+        box.style.backgroundColor = "";
+      });
+
+      game_name.innerHTML = "Tic Tac Toe";
+      currentPlayer = X_TEXT;
+      count_plays = 0;
+    } else if (e.target.id === "cancelRestart") {
+      document.getElementById("overlay").style.display = "none";
+    }
+  });
+}
+
+startGame();
