@@ -145,6 +145,10 @@ body {
   padding: 0;
 }
 
+.error {
+  text-align: center;
+}
+
 .hidden {
   display: none;
 }
@@ -173,9 +177,9 @@ input:focus {
 
 .balloon {
   position: absolute;
-  width: 200; 
-  height: 500; 
-  border-radius: 0; 
+  width: 200;
+  height: 500;
+  border-radius: 0;
   animation-name: balloon-animation;
   animation-duration: 3s;
   animation-fill-mode: forwards;

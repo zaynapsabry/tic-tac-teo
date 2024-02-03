@@ -1,3 +1,4 @@
+// * =============> Global variables ===============>
 const error = document.querySelector(".error");
 const errorMessage1 = document.querySelector(".errorMessage1");
 const errorMessage2 = document.querySelector(".errorMessage2");
@@ -6,6 +7,7 @@ const inputs = document.querySelectorAll("input");
 let isValid = false;
 let players;
 
+// * =============> Events ===============>
 formData.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -23,6 +25,7 @@ formData.addEventListener("input", function () {
   if (isValid === true) error.classList.add("hidden");
 });
 
+// * =============> Functions ===============>
 function setForm() {
   players = {
     player1: inputs[0].value,
