@@ -18,6 +18,9 @@ Tic Tac Toe is a classic game where two players take turns putting "X" or "O" on
 * Click on the grid to make your move.
 * The game will now display the score alongside notifying you if a player wins or the game ends in a draw.
 
+## Playing online
+* https://zaynapsabry.github.io/tic-tac-toe/
+
 ## Contributing
 * Aisha Galal
 * Alaa Mohamed
