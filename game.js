@@ -140,27 +140,30 @@ function handleWin() {
   dropBalloons(boxes[winning_blocks[0]]); //drop balloons call
 }
 
+//This function plays the winning sound either player X or O wins.
 function playBalloonPopSound() {
   const audio = new Audio("assets/winning (mp3cut.net).wav"); // balloon pop sound file
   audio.play();
 }
 
-//drop random balloons
+//This function drops random balloons
 function dropBalloons() {
   playBalloonPopSound();
 
+  // Array containing URLs of balloon images
   const balloonUrls = [
     "https://www.iconpacks.net/icons/1/free-icon-balloon-370.png",
     "https://www.iconpacks.net/icons/1/free-icon-balloon-438.png",
     "https://www.iconpacks.net/icons/1/free-icon-balloon-369.png",
-    // ... add more balloon URLs here
   ];
 
+  // Number of balloons to drop & Get the width and height of the webpage
   const balloonCount = 20;
   const pageWidth = window.innerWidth;
   const pageHeight = window.innerHeight;
 
   for (let i = 0; i < balloonCount; i++) {
+    // Randomly select a balloon image URL
     const randomIndex = Math.floor(Math.random() * balloonUrls.length);
     const balloonUrl = balloonUrls[randomIndex];
 
@@ -171,14 +174,18 @@ function dropBalloons() {
 
     const balloonRect = balloon.getBoundingClientRect();
 
+    // Calculate random offset positions within the webpage
     const offsetX = Math.random() * (pageWidth - balloonRect.width);
     const offsetY = Math.random() * (pageHeight - balloonRect.height);
 
+    // Set the position of the balloon
     balloon.style.left = `${offsetX}px`;
     balloon.style.top = `${offsetY}px`;
 
+    // Set a random animation delay for each balloon
     balloon.style.animationDelay = `${Math.random() * 2}s`;
 
+    // Remove the balloon from the DOM when the animation ends
     balloon.addEventListener("animationend", function () {
       document.body.removeChild(balloon);
     });
@@ -199,6 +206,7 @@ function switchPlayer() {
   currentPlayer = currentPlayer === X_TEXT ? O_TEXT : X_TEXT;
 }
 
+// Function to handle the state when the game ends in a draw
 function handleDraw() {
   game_name.innerHTML = `Draw Game!`;
   boxes.forEach((box) => (box.style.backgroundColor = "#ff7eb9"));
@@ -206,6 +214,7 @@ function handleDraw() {
   audio.play();
 }
 
+// Function to check if a player has won the game & filled a winning combination
 function playerHasWon() {
   for (const condition of winningCombos) {
     let [a, b, c] = condition;
@@ -217,6 +226,7 @@ function playerHasWon() {
   return false;
 }
 
+// Function to update and display the high scores for X and O players
 function updateHighScores() {
   highScoreXElement.innerText = highScoreX;
   highScoreOElement.innerText = highScoreO;
