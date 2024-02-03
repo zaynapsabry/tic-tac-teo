@@ -141,7 +141,7 @@ function handleWin() {
 }
 
 function playBalloonPopSound() {
-  const audio = new Audio("assets/winning.wav"); // balloon pop sound file
+  const audio = new Audio("assets/winning (mp3cut.net).wav"); // balloon pop sound file
   audio.play();
 }
 
