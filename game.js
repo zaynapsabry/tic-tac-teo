@@ -142,7 +142,7 @@ function handleWin() {
 
 //This function plays the winning sound either player X or O wins.
 function playBalloonPopSound() {
-  const audio = new Audio("assets/winning (mp3cut.net).wav"); // balloon pop sound file
+  const audio = new Audio("assets/winning_sound.mp3"); // balloon pop sound file
   audio.play();
 }
 
