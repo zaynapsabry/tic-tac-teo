@@ -5,10 +5,9 @@ const player2Name = document.getElementById("player2Name");
 let boxes = Array.from(document.getElementsByClassName("box"));
 let playersNames = JSON.parse(localStorage.getItem("players"));
 
-let highScoreX =
-  localStorage.getItem(`${playersNames?.player1}_highScore`) || 0;
-let highScoreO =
-  localStorage.getItem(`${playersNames?.player2}_highScore`) || 0;
+// Get high scores for player X and O from local storage or set to 0 if not present
+let highScoreX = localStorage.getItem(`${playersNames?.player1}_highScore`) || 0;
+let highScoreO = localStorage.getItem(`${playersNames?.player2}_highScore`) || 0;
 
 const highScoreXElement = document.getElementById("highScoreX");
 const highScoreOElement = document.getElementById("highScoreO");
@@ -32,18 +31,23 @@ const modalRef = document.getElementById("modal");
 
 let exitBtn = document.getElementById("exitBtn");
 
+// Defines the combinations of winning moves on the tic-tac-toe board
 const winningCombos = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
+  [0, 1, 2],  // Top row
+  [3, 4, 5],  // Middle row
+  [6, 7, 8],  // Bottom row
+  [0, 3, 6],  // Left column
+  [1, 4, 7],  // Middle column
+  [2, 5, 8],  // Right column
+  [0, 4, 8],  // Diagonal from top-left to bottom-right
+  [2, 4, 6],  // Diagonal from top-right to bottom-left
 ];
 
+
 // * =============> Events ===============>
+
+// Initializes the game by setting player names, displaying initial high scores, 
+// and adding a click event listener to each game box
 const startGame = () => {
   player1Name.innerHTML = `${playersNames?.player1}: `;
   player2Name.innerHTML = `${playersNames?.player2}: `;
@@ -78,7 +82,9 @@ restartBtn.addEventListener("click", () => {
   restart("Are you sure you want to start a new game?");
 });
 
+
 // * =============> Functions ===============>
+
 //this function manages box clicks during the game. If a box is empty and the game is not over, it triggers handleMove(). If all boxes are filled and no winner is found, it triggers handleDraw().
 function boxClicked(e) {
   const id = e.target.id;
@@ -110,20 +116,30 @@ function handleWin() {
     game_name.innerHTML = `${playersNames?.player1} has won!`;
     if (scoreX) {
       X_score++;
+      
+      // Check if the current score for Player X is higher than the stored high score
       if (X_score > highScoreX) {
-        highScoreX = X_score;
-        localStorage.setItem(`${playersNames?.player1}_highScore`, highScoreX);
+        // Update the high score with the current score for Player X
+        highScoreX = X_score;     
+        // Store the updated high score in local storage
+        localStorage.setItem(`${playersNames?.player1}_highScore`, highScoreX);     
       }
+      
       scoreX.innerText = `${X_score}`;
     }
   } else {
     game_name.innerHTML = `${playersNames?.player2} has won!`;
     if (scoreO) {
       O_score++;
+
+      // Check if the current score for Player O is higher than the stored high score
       if (O_score > highScoreO) {
+        // Update the high score with the current score for Player O
         highScoreO = O_score;
+        // Store the updated high score in local storage
         localStorage.setItem(`${playersNames?.player2}_highScore`, highScoreO);
       }
+
       scoreO.innerText = `${O_score}`;
     }
   }
@@ -206,7 +222,7 @@ function switchPlayer() {
   currentPlayer = currentPlayer === X_TEXT ? O_TEXT : X_TEXT;
 }
 
-// Function to handle the state when the game ends in a draw
+// Handles the draw scenario, by displaying a message and changing box colors to pink and playing a sound
 function handleDraw() {
   game_name.innerHTML = `Draw Game!`;
   boxes.forEach((box) => (box.style.backgroundColor = "#ff7eb9"));
@@ -214,7 +230,8 @@ function handleDraw() {
   audio.play();
 }
 
-// Function to check if a player has won the game & filled a winning combination
+// Checks if any player has won by iterating through winning combinations
+// Returns the winning combination if found, otherwise returns false
 function playerHasWon() {
   for (const condition of winningCombos) {
     let [a, b, c] = condition;
@@ -226,7 +243,8 @@ function playerHasWon() {
   return false;
 }
 
-// Function to update and display the high scores for X and O players
+
+//Updates and displays the high scores for both players on the game interface.
 function updateHighScores() {
   highScoreXElement.innerText = highScoreX;
   highScoreOElement.innerText = highScoreO;
