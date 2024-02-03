@@ -11,6 +11,8 @@ let players;
 formData.addEventListener("submit", function (e) {
   e.preventDefault();
 
+  //Check if the form data is valid, if yes, set the form data and store it in local storage
+  //If the form is not valid, reveal the error message by removing the "hidden" class
   if (isValid) {
     setForm();
     localStorage.setItem("players", JSON.stringify(players));
@@ -26,6 +28,8 @@ formData.addEventListener("input", function () {
 });
 
 // * =============> Functions ===============>
+
+//Function to Update the 'players' object with values from the input fields
 function setForm() {
   players = {
     player1: inputs[0].value,
@@ -33,6 +37,7 @@ function setForm() {
   };
 }
 
+// Function to validate names using a regular expression
 function validateNames() {
   const regexStyle = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
   let valid = true;
