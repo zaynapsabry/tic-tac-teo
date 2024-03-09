@@ -1,4 +1,4 @@
-# Tic-Tac-Teo
+# Tic-Tac-Toe
 It's a classic XO game
 
 ## Description
